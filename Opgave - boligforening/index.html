@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortens boligforening</title>
+    <link rel="stylesheet" href="styles/mystyle.css">
+</head>
+
+<body>
+    <h1>Mortens boligforening</h1>
+    <div class="header">
+        <div>
+            <button type="button" class="button" id="addLejerButton">Tilføj lejer</button>
+            <button type="button" class="button" id="showAllLejereButton">Vis alle lejere</button>
+        </div>
+        
+        <form id="lnSearchForm">
+            <input type="search" id="lnField" class="inputField" placeholder="Søg lejlighedsnummer" required>
+            <button type="submit" class="button">Søg</button>
+        </form>
+    
+    </div>
+
+    <!-- Panel starts here -->
+    <aside class="searchPanel" id="searchPanel">
+        <span class="panelText" id="panelText">A D V A N C E R E T&nbsp;&nbsp; S Ø G N I N G</span> <!--&nbsp; means non breaking space - force the browser to make a space-->
+        <form id="searchForm" class="searchForm">
+            <div class="closeCross" id="closeCross">X</div>
+
+            <label class="searchFormLabel" for="lejlighedsNummer">Lejlighedsnummer</label><input type="text" id="lejlighedsNummer" class="searchFormField">
+
+            <label class="searchFormLabel" for="lejer">Lejer</label><input type="text" id="lejer" class="searchFormField">
+
+            <label class="searchFormLabel" for="indflytningsDato">Indflytningsdato</label><input type="text" id="indflytningsDato" class="searchFormField">
+
+            <label class="searchFormLabel" for="indskud">Indskud</label><input type="number" step="100" id="indskud" class="searchFormField">
+
+            <label class="searchFormLabel" for="husleje">Husleje</label><input type="number" step="100" id="husleje" class="searchFormField">
+
+            <br><br>
+
+             <!-- Buttons -->
+            <div class="searchFormPanel">
+                <button type="reset" class="searchFormButton">Nulstil</button>
+                <button type="submit" class="searchFormButton">Anvend</button>
+            </div>
+        </form>
+    </aside>
+    <!-- Panel ends here -->
+
+    <!-- Add lejer dialog starts -->
+    <dialog id="lejerDialog"> <!-- Som udgangspunkt bliver dialog tag ikke vist – der skal derfor noget JS til -->
+        <form method="dialog" id="lejerDialogForm"> <!-- method=dialog gør at når brugeren krydser submit, og formen er fyldt som forventet, så lukker dialog automatisk og ikke redirector-->
+            <fieldset>
+                <legend>Tilføj ny lejer</legend>
+                <label for="lnfield">Lejlighedsnummer:</label><input text="text" class="inputField dialogField" id="lnfield" placeholder="Indtast lejlighedsnummer" required>
+                <label for="lejerfield">Lejer:</label><input text="text" class="inputField dialogField" id="lejerfield" placeholder="Indtast lejer" required>
+                <label for="indflytningsdatofield">Indflytningsdato:</label><input text="text" class="inputField dialogField" id="indflytningsdatofield" placeholder="Indtast indflytningsdato" required>
+                <label for="indskudfield">Indskud:</label><input text="text" class="inputField dialogField" id="indskudfield" placeholder="Indtast indskud" required>
+                <label for="huslejefield">Husleje:</label><input text="text" class="inputField dialogField" id="huslejefield" placeholder="Indtast husleje" required>
+
+                <br><br>
+                <div class="dialogBtnsPanel">
+                    <button type="button" id="cancelButton" class="button">Fortryd</button>
+                    <button type="submit" id="saveButton" class="button">Gem</button>
+                </div>
+            </fieldset>
+        </form>
+    </dialog>
+    <!-- Add lejer dialog ends -->
+
+    <!-- Delete confirmation dialog start -->
+    <dialog id="confirmDialog">
+        <form method="dialog" id="confirmDialogForm">
+            <fieldset>
+                <legend>Slet lejer?</legend>
+                Er du sikker på, at du vil slette lejer?
+                <br><br>
+                <div class="dialogBtnsPanel">
+                    <button type="submit" class="button">Yes</button>
+                    <button type="button" class="button" id="cancelConfirmBtn">No</button>
+                </div>
+            </fieldset>
+        </form>
+    </dialog>
+    <!-- Delete confirmation dialog end -->
+
+    <!-- Hidden field (store info som brugeren ik skal se - kan blive brugt i applicationen) -->
+    <form>
+        <input type="hidden" id="hiddenLnField">
+    </form>
+
+    <!-- resultat (cards) -->
+    <div id="searchResult"></div>
+
+    <!-- snackbar -->
+    <div id="snackbar">En besked vil dukke op</div>
+
+    <script type="module">
+        import Model from "./models/model.js"
+        import Controller from "./controllers/controller.js"
+        import View from "./views/view.js"
+
+        window.onload = function () {
+            const model = new Model();
+            const controller = new Controller();
+            const view = new View(controller); //view skal vide dets controller
+            controller.initialize(model, view); // controlleren skal vide dens model og view
+        }
+    </script>
+
+</body>
+
+</html>

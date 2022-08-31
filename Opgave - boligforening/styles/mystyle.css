@@ -1,0 +1,235 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tablelist {
+     border-collapse: collapse;
+    width: 100%;
+}
+
+.tablelist td,
+.tablelist th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tablelist tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tablelist tr:hover {
+    background-color: #ddd;
+}
+
+.tablelist th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.searchform {
+   padding: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    margin-right: 35px;
+}
+
+.inputField,
+.button {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: rgb(211, 206, 206); 
+}
+
+#dialogForm {
+    width: 300px;
+    border: 0;
+    box-shadow: 10px 10px 5px gray;
+}
+
+.dialogField {
+    width: 95%;
+}
+
+.dialogBtnsPanel {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;;
+}
+
+#lejerDialog {
+    width: 25%;
+    min-width: 370px;
+}
+
+/* Source: https://www.w3schools.com/howto/howto_js_snackbar.asp */
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  /* Search panel start */
+  .searchPanel {
+    position: fixed; /* skjul scroll-bar laver fixed */
+    background-color: black;
+    height: 100vh;
+    width: 30px;
+    right: 0px;
+    top: 0;
+    transition: width 2s; /* forbedreder panellet til animation*/
+    display: flex;
+  }
+
+  .searchPanelAnim {
+    width: 300px; /* panellet går fra 30px til 300px*/
+  }
+
+  .panelText {
+    position: relative;
+    color: white;
+    top: 20px;
+    left: 5px;
+    writing-mode: vertical-rl; /* gør teksten vertical */
+    text-orientation: mixed;
+    height: 95vh;
+    cursor: pointer;
+  }
+
+  .closeCross {
+    text-align: right;
+    color: white;
+    cursor: pointer;
+  }
+
+  .searchForm {
+    padding-left: 20px;
+    padding-top: 135px;
+  }
+
+  .searchFormLabel {
+    color: white;
+    display: block;
+  }
+
+  .searchFormField {
+    width: 225px;
+  }
+
+  .searchFormPanel {
+    display: flex;
+  }
+  /* Search panel end */
+
+
+  /* MINE ÆNDRINGER */
+  /* CARD */
+  #searchResult {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card {
+    background-color: lightgrey;
+    width: 300px;
+    margin: 2em;
+    padding: 2em;
+    border-radius: 4px;
+  }
+  .card img{
+    background-color: white;
+  }
+
+  /* btns */
+  .card button{
+    background-color:rgb(232, 62, 62);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  .button{
+    background-color:black;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  .button:hover, .searchFormButton:hover {
+    background-color:lightgray;
+    color: black;
+    cursor: pointer;
+  }
+  .searchFormButton{
+    background-color:white;
+    border: none;
+    color: black;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
